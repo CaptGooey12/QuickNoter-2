@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/lumen-bootstrap.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+
+    <title>QuickNoter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+<body style="background-color: #e0f6ff;">
+    <div class="navbar-container">
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand headertitle" href="#">QuickNoter</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse leftButtons" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="quicknoter-web.html">Web</a>
+                    <span class="visually-hidden">(current)</span>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Download</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="./assets/installer/QuickNoter.msi" download>Windows</a>
+                      <a class="dropdown-item" href="./assets/installer/QuickNoter.dmg" download>MacOS</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </div>
+<center>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="HeaderTitle">QuickNoter</h1>
+        </div>
+        <div class="textbox">
+            <textarea name="textbox" id="textbox" class="col-lg-12 col-md-12 col-sm-12 border border-primary border-2 rounded-2"></textarea>
+        </div>
+        <div class="row">
+        <div class="col-6">
+        <div class="btn-group LButtons" id="LButtons" role="group">
+            <!--Open Button-->
+            <label for="file-selector" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open text file">Open</label>
+            <input type="file" id="file-selector"></button>
+            <!--Open Button-->
+
+            <!--Save Button-->
+            <a id="hidden-link" href="#" download></a>
+            <button id="save" name="save" onclick="save()" type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Save text">Save</button>
+            <!--Save Button-->
+
+            <!--Copy Button-->
+            <button id="copy" name="copy" onclick="copy()" type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy text to clipboard">Copy</button>
+            <!--Copy Button-->
+        </div>
+        </div>
+        <div class="col-6">
+        <div class="settings-button" align="right">
+          <button id="delete" name="delete" onclick="del()" type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Deletes everything"><i class="bi bi-trash-fill"></i></button>
+            <a class="btn btn-outline-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="bi bi-gear-fill"></i></a>
+        </div>
+        </div>
+        </div>
+    </div>
+    <br>
+
+</center>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Settings</h5>
+      <button type="button" class="btn btn-outline-primary text-reset" data-bs-dismiss="offcanvas"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="DarkmodeSwitch">
+        <label class="form-check-label" for="DarkmodeSwitch"> Dark Mode</label>
+    </div>
+    <div class="form-group">
+        <label for="fontSelect" class="form-label mt-4">Select Font</label>
+        <select class="form-select" id="fontSelect">
+          <option value="'Lato', sans-serif">Lato</option>
+          <option value="'Orbitron', sans-serif">Orbitron</option>
+          <option value="'Playpen Sans', cursive">Playpen Sans</option>
+          <option value="'Space Mono', monospace">Space Mono</option>
+          <option value="'Luckiest Guy', cursive">Luckiest Guy</option>
+          <option value="'Press Start 2P', cursive">Press Start 2P</option>
+        </select>
+      </div>
+      </div>
+    </div>
+    <center>
+    <footer>
+        <p>&copy; Copyright 2024 - Gooey.</p>
+    </footer>
+</center>
+  </div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    transition: all 1s ease;
+}
+
+body {
+    background-color: #e0f6ff;
+    transition: background-color 1s ease;
+}
+
+h1 {
+    font-family: 'Lilita One', sans-serif !important;
+    color: #158cba !important;
+}
+
+.HeaderTitle {
+    margin-top: 12px;
+}
+
+#file-selector {
+    display: none;
+}
+
+#textbox {
+    resize: none;
+    background-color: rgb(245, 251, 255);
+    border-color: #158cba;
+    color: black;
+}
+
+.buttons {
+    display: flex;
+}
+
+.LButtons {
+    margin-right: 445px;
+}
+
+::selection {
+    background-color: rgba(0, 255, 255, 0.897);
+}
+</style>
+<script>
+const textbox = document.getElementById("textbox");
+const openfile = document.getElementById("open");
+const LB = document.getElementById("LButtons");
+
+//Save Text
+function save() {
+    var download = document.getElementById("hidden-link");
+    download.href = "data:text/plain," + textbox.value;
+    download.click();
+};
+
+//Copy Text To Clipboard
+function copy() {
+    const copy = document.getElementById("textbox");
+    copy.select();
+    navigator.clipboard.writeText(textbox.value)
+}
+
+//Delete texts
+function del() {
+    textbox.value = "";
+}
+
+
+
+// Textarea
+function updateTextareaHeight() {
+    var textarea = document.getElementById('textbox');
+    var windowHeight = window.innerHeight;
+
+    if (windowHeight <= 600) {
+        textarea.rows = 18;
+    } else {
+        textarea.rows = 26;
+    }
+}
+
+window.addEventListener('resize', updateTextareaHeight);
+
+updateTextareaHeight();
+
+function updateTextareaHeight() {
+    var textarea = document.getElementById('textbox');
+    var windowHeight = window.innerHeight;
+
+    if (windowHeight <= 600) { 
+        textarea.rows = 12;
+    } else {
+        textarea.rows = 20;
+
+    }
+}
+
+// Call the function when the window is resized
+window.addEventListener('resize', updateTextareaHeight);
+
+updateTextareaHeight();
+
+
+
+// Open File
+const output = document.getElementById("textbox");
+
+if (window.FileList && window.File && window.FileReader) {
+  document.getElementById('file-selector').addEventListener('change', event => {
+    textbox.value = '';
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', event => {
+      textbox.value = event.target.result;
+      });
+    reader.readAsText(file);
+    }); 
+}
+
+
+
+// Dark Mode
+document.addEventListener('DOMContentLoaded', function() {
+const DarkModeToggle = document.getElementById("DarkmodeSwitch");
+const OffC = document.getElementById("offcanvasExample");
+
+DarkModeToggle.addEventListener('change', function() {
+    document.body.style.backgroundColor = this.checked ? '#303536' : '#e0f6ff' ;
+    textbox.style.backgroundColor = this.checked ? '#464646' : 'rgb(245, 251, 255)' ;
+    textbox.style.color = this.checked ? 'white' : 'black' ;
+    document.button.style.color = this.checked ? 'white' : 'black' ;
+    OffC.style.backgroundColor = this.checked ? '#303536' : 'white' ;
+});
+});
+
+
+
+// Font Selector
+const selectedFont = document.querySelector("#fontSelect");
+
+selectedFont.addEventListener('change', function() {
+    textbox.style.fontFamily = selectedFont.value;
+});
+</script>
+<script src="./assets/bootstrap.bundle.min.js"></script>
+</body>
+</html>
